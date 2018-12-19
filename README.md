@@ -1,2 +1,2 @@
-# br_game
+# beer_game
 SE_project
