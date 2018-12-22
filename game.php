@@ -3,7 +3,7 @@ require("ordermodel.php");
 //require("userModel.php");
 //checkLogin();
 //$result=getOrderList();
-
+$result = addOrder();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,7 +26,7 @@ require("ordermodel.php");
     <td>下單數量</td>
 
   </tr>
-  <tr><form method="post" action="01.insert.php">
+  <tr><form method="post" action="ordermodel.php">
     <td><label>
       <input name="number" type="text" id="number" />
       <input type="submit" name="Submit" value="送出" />
