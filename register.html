@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />  
+        <meta name="keywords" content=" " />
+        <meta name="description" content=" " />
+        <title>Beer game註冊</title>
+        <style type="text/css">
+        body{ 
+            font-size: 30px;
+            background-color: #beb452;
+        }
+        joinFrm{
+            font-size: 20px;
+        }           
+        </style>
+        <script>
+            function readURL(input){
+                if(input.files && input.files[0]){
+                var imageTagID = input.getAttribute("targetID");
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = document.getElementById(imageTagID);
+                    img.setAttribute("src", e.target.result)
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+            }
+        </script>
+
+    </head>
+    <body style="color:black">
+        <center>
+            <head1>
+                Beer game註冊
+            </head1>
+        </center>
+
+        <div id="joinFrm">
+		    <fieldset>
+			    <legend>請填寫以下資料:</legend>
+                <table style="border:3px rgb(24, 19, 14) ;padding:5px;" rules="all" cellpadding='5' align='center'>
+                    <form method="post" 
+                    action=" "
+                    enctype="multipart/form-data"
+                    >
+                        <tr>
+                            <td>id:</td>
+                            <td><input type="text" name="uid"  placeholder="id" required/></td>
+                        </tr>
+                        <tr>
+                            <td>上傳大頭貼:</td>
+                            <td>
+                                <form action="/somewhere/to/upload" enctype="multipart/form-data">
+                                    <input type="file" onchange="readURL(this)" targetID="preview_img" accept="image/gif, image/jpeg, image/png"/ >
+                                    </br>
+                                    <img id="preview_img" src="#" />                        
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>密碼:</td>
+                            <td><input type="password" required></td>
+                        </tr>
+                        <tr>
+                            <td>確認密碼:</td>
+                            <td><input type="password" required></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <center>
+                                    <input type="submit" value="確定">
+                                    <input type="reset" value="重設">
+                                    <a href="login.html" style="font:100">返回登入頁面</a>
+                                </center>
+
+                            </td>
+                        </tr>
+                </table>
+            </fieldset>
+        </div>
+            
+        </body>
+</html>
