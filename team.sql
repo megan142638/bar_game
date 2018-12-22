@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2018 年 12 月 22 日 15:42
+-- 產生時間： 2018 年 12 月 22 日 16:19
 -- 伺服器版本: 10.1.32-MariaDB
 -- PHP 版本： 7.2.5
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `content` (
-  `roomNo` int(11) NOT NULL,
+  `roomNo` int(10) NOT NULL,
   `player` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `role` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -87,12 +87,6 @@ INSERT INTO `user` (`uid`, `loginID`, `password`) VALUES
 --
 
 --
--- 資料表索引 `content`
---
-ALTER TABLE `content`
-  ADD PRIMARY KEY (`roomNo`);
-
---
 -- 資料表索引 `list`
 --
 ALTER TABLE `list`
@@ -107,12 +101,6 @@ ALTER TABLE `user`
 --
 -- 在匯出的資料表使用 AUTO_INCREMENT
 --
-
---
--- 使用資料表 AUTO_INCREMENT `content`
---
-ALTER TABLE `content`
-  MODIFY `roomNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- 使用資料表 AUTO_INCREMENT `list`
