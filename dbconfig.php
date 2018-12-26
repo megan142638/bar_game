@@ -13,5 +13,6 @@ mysqli_query($db,"SET NAMES utf8"); //選擇編碼
 	if ( ! isset($_SESSION["uID"]) or $_SESSION["uID"] <= 0) {
             header("Location: login.php");
 	}
+	
 }*/
 ?>
