@@ -40,10 +40,7 @@
 		    <fieldset>
 			    <legend>請填寫以下資料:</legend>
                 <table style="border:3px rgb(24, 19, 14) ;padding:5px;" rules="all" cellpadding='5' align='center'>
-                    <form method="post" 
-                    action=" "
-                    enctype="multipart/form-data"
-                    >
+                    <form method="post" action="register.php" enctype="multipart/form-data">
                         <tr>
                             <td>id:</td>
                             <td><input type="text" name="uid"  placeholder="id" required/></td>
@@ -60,7 +57,7 @@
                         </tr>
                         <tr>
                             <td>密碼:</td>
-                            <td><input type="password" required></td>
+                            <td><input type="password" name="pwd" required></td>
                         </tr>
                         <tr>
                             <td>確認密碼:</td>

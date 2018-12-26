@@ -17,31 +17,32 @@
     <body>
         <center>
             <head1 style="color:black">
-                Welcome to Beer Game
-            </head1>
-            <fieldset>
-                <legend>Beer game登入</legend>
-                <table>
-                        <div id="login_content"> 
-                            <div id="title_text"></div>    
-                            <div id="text_box"> 
-                                <div>id: 
-                                    <input type="text">
-                                </div> 
-                                <div>password: 
-                                    <input type="password">
-                                </div> 
+                    Welcome to Beer Game
+                </head1>
+            <form method="post" action="login.php">
+                <fieldset>
+                    <legend>Beer game登入</legend>
+                    <table>
+                            <div id="login_content"> 
+                                <div id="title_text"></div>    
+                                <div id="text_box"> 
+                                    <div>id: 
+                                        <input type="text" name="id">
+                                    </div> 
+                                    <div>password: 
+                                        <input type="password" name="pwd">
+                                    </div> 
+                                </div>
                             </div>
-                        </div>
-                    <tr>
-                        <td colspan="2">
-                            <input type="button" value="登入">
-                            <a href="register.html">註冊帳號</a>
-                        </td>
-                    </tr>
-                    </table>            
-            </fieldset>
-            
+                        <tr>
+                            <td colspan="2">
+                                <input type="button" value="登入">
+                                <a href="register.html">註冊帳號</a>
+                            </td>
+                        </tr>
+                        </table>            
+                </fieldset>
+            </form>
         </center>
     </body>
 </html>
