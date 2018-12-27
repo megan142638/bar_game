@@ -15,4 +15,5 @@ if($id){
 	mysqli_stmt_bind_param($stmt, "i", $RoomNo);
 	mysqli_stmt_execute($stmt);
 }
+header("Location: Room.php?roomNo=$RoomNo");
 ?>
