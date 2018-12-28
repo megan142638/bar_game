@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />  
+        <meta name="keywords" content=" " />
+        <meta name="description" content=" " />
+        <title>房間列表</title>
+        <center><h1>房間列表</h1></center>
+        <style type="text/css">
+            body{ 
+                font-size: 30px;
+                background-color: #beb452;
+            }   
+    
+        </style>
+    </head>
+    <body>
+        <center>
+            <table width="50%" border="1">
+                    <div id="head">
+                            <th>房號:</th>
+                            <th>房名:</th>
+                            <th>房主ID:</th>
+                            <th>角色:</th>
+                            <th>人數:</th>
+                    </div>
+                    <tr>
+                        <td colspan="6">
+                            <center>
+                                <div id="choice">
+                                    <input type="radio" name="role" value="Factory"><b>工廠</b>
+                                    <input type="radio" name="role" value="Distributor"><b>經銷商</b>
+                                    <input type="radio" name="role" value="Wholesaler"><b>大盤商</b>
+                                    <input type="radio" name="role" value="Retailer"><b>零售商</b>
+                                </div>
+                            </center>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td colspan="5">
+                                <center>
+                                    <input type="button" onclick="location.href='http://google.com';" value="創建房間">
+                                    <input type="button" onclick="location.href='http://google.com';" value="登出">
+                                </center>
+                            </td>
+                        </tr>
+            </table>
+        </center>
+    </body>
+</html>
