@@ -17,21 +17,22 @@ $id= getCurrentID();
 $role=$_POST['role'];
 
 if ($name) {
-    $sql = "select MAX(roomNo) m from list";
+    $sql = "insert into list (name, leaderID, count) values (?, ?, 1)";
+	$stmt = mysqli_prepare($db, $sql); //prepare sql statement
+	mysqli_stmt_bind_param($stmt, "ss", $name, $id); //bind parameters with variables
+	mysqli_stmt_execute($stmt);  //執行SQL
+    
+    $sql = "select roomNo from list where leaderID = ?";
     $stmt = mysqli_prepare($db, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $id);
     mysqli_stmt_execute($stmt); //執行SQL
     $result = mysqli_stmt_get_result($stmt);
     $rs = mysqli_fetch_assoc($result);
-    $No = $rs['m']++;
+    $No = $rs['roomNo'];
     
 	$sql = "insert into content (roomNo, player, role) values (?, ?, ?)";
 	$stmt = mysqli_prepare($db, $sql); //prepare sql statement
 	mysqli_stmt_bind_param($stmt, "iss", $No, $id, $role); //bind parameters with variables
-	mysqli_stmt_execute($stmt);  //執行SQL
-    
-    $sql = "insert into list (name, leaderID, count) values (?, ?, 1)";
-	$stmt = mysqli_prepare($db, $sql); //prepare sql statement
-	mysqli_stmt_bind_param($stmt, "ss", $name, $id); //bind parameters with variables
 	mysqli_stmt_execute($stmt);  //執行SQL
     
     /*$sql = "select roomNo from list where leaderID= ?";
@@ -39,7 +40,6 @@ if ($name) {
     mysqli_stmt_bind_param($stmt, "s", $id);
     mysqli_stmt_execute($stmt); //執行SQL
     $result = mysqli_stmt_get_result($stmt);*/
-
 	header("Location: Room.php?roomNo=$No");
 } else {
 	echo "error";
