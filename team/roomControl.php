@@ -58,15 +58,31 @@ function getRole()
         array_push($arr,$rs['role']);
     return $arr;
 }
-function insert(){
+function update(){
     global $db;
     $id= getCurrentID();
     $role=$_POST['role'];
     
-    $sql = "insert into content (player, role) values (?, ?)";
+    $sql = "UPDATE content SET role= ? where player = ?";
 	$stmt = mysqli_prepare($db, $sql); 
-	mysqli_stmt_bind_param($stmt, "ss", $id, $role);
+	mysqli_stmt_bind_param($stmt, "ss", $role, $id);
 	mysqli_stmt_execute($stmt);
-    header("Location: Room.php?roomNo=$RoomNo");
+    $result = mysqli_stmt_get_result($stmt); 
+    
+    echo "<td>", $role, "</td></tr>";
+}
+function check(){
+    global $db;
+    $id= getCurrentID();
+    $sql = "select role from content where player = ?";
+    $stmt = mysqli_prepare($db, $sql);
+    mysqli_stmt_bind_param($stmt, "s", $id);
+    mysqli_stmt_execute($stmt); //執行SQL
+    $result = mysqli_stmt_get_result($stmt); 
+    $rs = mysqli_fetch_assoc($result);
+    if ($rs['role'])
+        return 0;
+    else
+        return 1;
 }
 ?>
