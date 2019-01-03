@@ -51,7 +51,7 @@ for($week = 2; $week<50; $week++){
 	    echo "已下單";
 		$week++;
 	}
-}//
+}
 ?>
 
 
