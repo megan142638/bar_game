@@ -16,7 +16,7 @@ $role = getRole();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>房間</title>
-<meta http-equiv="refresh" content="2" />
+<meta http-equiv="refresh" content="3" />
 </head>
 
 <body>
@@ -43,12 +43,20 @@ for($i = 0; $i < $count; $i++){
             echo "<form method=\"post\" action=\"\"><td>";
             for ($l = 0; $l < count($arr); $l++)
                 echo '<input type="radio" name="role" value="',$arr[$l],'"/>', $arr[$l] ,'</br>';
-            echo '<input type="submit" /></td></tr>';
+            echo '<input type="submit" /></td></form></tr>';
         }
     }
 }
 ?>
 </table>
-<a href='teamlist.php'>返回隊伍列表</a>
+<form method="post" action="">
+<input type="submit" name="Button" value="退出房間" />
+</form>
+<?php
+if (isset($_POST['Button']))
+    del();
+else if (!$leader)
+    header("Location: teamlist.php");
+?>
 </body>
 </html>
