@@ -85,4 +85,31 @@ function check(){
     else
         return 1;
 }
+function del(){
+    global $db, $RoomNo;
+    $id = getCurrentID();
+    if ($id == getLeader()){
+        $sql = "DELETE FROM content WHERE roomNo = ?";
+        $stmt = mysqli_prepare($db, $sql);
+        mysqli_stmt_bind_param($stmt, "s", $RoomNo);
+        mysqli_stmt_execute($stmt);
+        
+        $sql = "DELETE FROM list WHERE roomNo = ?";
+        $stmt = mysqli_prepare($db, $sql);
+        mysqli_stmt_bind_param($stmt, "s", $RoomNo);
+        mysqli_stmt_execute($stmt);
+        header("Location: teamlist.php");
+    } else {
+        $sql = "DELETE FROM content WHERE player = ?";
+        $stmt = mysqli_prepare($db, $sql);
+        mysqli_stmt_bind_param($stmt, "s", $id);
+        mysqli_stmt_execute($stmt);
+        
+        $sql = "UPDATE list SET count = count-1 where roomNo = ?";
+        $stmt = mysqli_prepare($db, $sql); 
+        mysqli_stmt_bind_param($stmt, "s", $RoomNo);
+        mysqli_stmt_execute($stmt);
+        header("Location: teamlist.php");
+    }
+}
 ?>

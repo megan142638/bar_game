@@ -16,6 +16,7 @@ $result=getTeamList();
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>隊伍列表</title>
+<meta http-equiv="refresh" content="3" />
 </head>
 
 <body>
