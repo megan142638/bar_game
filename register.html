@@ -40,10 +40,15 @@
 		    <fieldset>
 			    <legend>請填寫以下資料:</legend>
                 <table style="border:3px rgb(24, 19, 14) ;padding:5px;" rules="all" cellpadding='5' align='center'>
-                    <form method="post" action="register.php" enctype="multipart/form-data">
+                    <form enctype="multipart/form-data" action="upload.php" method="post">
                         <tr>
                             <td>id:</td>
                             <td><input type="text" name="uid"  placeholder="id" required/></td>
+                        </tr>
+
+                        <tr>
+                            <td>上傳的圖片</td>
+                            <td><input type='file' id="file" name="file" /></td>
                         </tr>
                         
                         <tr>
