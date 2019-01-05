@@ -23,23 +23,28 @@ $result=getTeamList();
         <center><h1>隊伍列表</h1></center>
         <style type="text/css">
             body{ 
-                font-size: 30px;
-                background-color: #beb452;
+                font-size: 20px;
+                background:url(wood.jpeg);
+                -moz-background-size:cover;
+                -webkit-background-size:cover;
+                -o-background-size:cover;
+                background-size:cover;
             }   
+
         </style>
     </head>
 
-    <body>
+    <body style="color:white">
         <center>
-        <table width="600" border="1" class="">
+        <table width="600" border="1" >
             <tr>
-                <td>id</td>
+                <td>房號:</td>
                 <td>隊伍名稱:</td>
                 <td>隊長:</td>
                 <td>人數:</td>
                 <td>選項:</td>
             </tr>
-            <tr>
+            <tr>    
                 <?php
                     while ($rs = mysqli_fetch_assoc($result)) {
                         echo "<tr><td>" , $rs['roomNo'] ,
@@ -48,21 +53,20 @@ $result=getTeamList();
                         "</td><td>" , $rs['count'],"</td>";
                         echo '<td><a href="add2Team.php?roomNo=', $rs['roomNo'],'">進入隊伍</a></td></tr>';
                     }
-                ?>
+                ?>                
             </tr>
             <tr>
-              <td colspan="5">
-                <center>
-            <?php
-            //<input type='button' name='Submit' value='入库' onclick='location.href='insert.php?a=1''/>
-                echo "<a href='creatTeam.php'>創建隊伍 </a>";
-                echo "<a href='logout.php'>登出</a>";
-            ?>
-            </center>
-            </td>
+                <td colspan="5">
+                    <center>
+                        <?php
+                            //<input type='button' name='Submit' value='入库' onclick='location.href='insert.php?a=1''/>          
+                            echo "<a href='creatTeam.php'>創建隊伍 </a> <br>";
+                            echo "<a href='logout.php'>登出</a>";
+                        ?>
+                    </center>
+                </td>
             </tr>
         </table>
-        
         </center>
     </body>
 </html>
