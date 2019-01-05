@@ -4,46 +4,81 @@
         <meta charset="UTF-8" />  
         <meta name="keywords" content=" " />
         <meta name="description" content=" " />
-		<link rel="Shortcut Icon" type="image/x-icon" href="beer.png" />
         <title>Beer game登入</title>
         <style type="text/css">
-        body{ 
-            font-size: 30px;
-            background-color: #beb452;
-        }   
+        #rcorner {
+            position: absolute;
+            
+            right: 125px;
+            bottom: 400px;
+            border-radius: 25px;
+            
+            padding: 20px; 
+            width: 250px;
+            height: 120px;
+        }
+        #beer {
+            position: absolute;
+            left: 50px;
+            bottom: 200px;
+        }
+        body {
+            background-image: url(beer1.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        form {
+            margin: 10px;
+        }
+        .GeneratedMarquee {
+            font-family:'Comic Sans MS';
+            font-size:2em;
+            font-weight:bold;
+            line-height:1.3em;
+            color:#FF0000;
+            
+            padding:.5em;
 
+        }
         </style>
     </head>
 	
     <body>
         <center>
             <head1 style="color:black">
-                    Welcome to Beer Game
-                </head1>
-            <form method="post" action="login.php">
-                <fieldset>
-                    <legend>Beer game登入</legend>
-                    <table>
-                            <div id="login_content"> 
-                                <div id="title_text"></div>    
-                                <div id="text_box"> 
-                                    <div>id: 
-                                        <input type="text" name="id">
-                                    </div> 
-                                    <div>password: 
-                                        <input type="password" name="pwd">
-                                    </div> 
+                <marquee class="GeneratedMarquee" direction="left" scrollamount="9" behavior="scroll">Welcome to Beer Game!!</marquee>
+            </head1>
+            <div id="rcorner">
+                <form method="post" action="login.php">
+                    
+                        <legend>Beer game登入</legend>
+                        <table>
+                                <div id="login_content"> 
+                                    <div id="title_text"></div>    
+                                    <div id="text_box"> 
+                                        <div>帳號: 
+                                            <input type="text" name="id">
+                                        </div>
+                                        <div>密碼: 
+                                            <input type="password" name="pwd">
+                                        </div> 
+                                    </div>
                                 </div>
-                            </div>
-                        <tr>
-                            <td colspan="2">
-                                <input type="submit" value="登入">
-                                <a href="register.html">註冊帳號</a>
-                            </td>
-                        </tr>
-                        </table>            
-                </fieldset>
-            </form>
+                            <tr>
+                                <td colspan="2">
+                                    <input type="submit" value="登入">
+                                    <a href="register.html">註冊帳號</a>
+                                </td>
+                            </tr>
+                            </table>            
+                    
+                </form>
+            </div>
+            
+            
         </center>
     </body>
 </html>
+
+
+
