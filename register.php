@@ -2,8 +2,6 @@
 require("dbconfig.php");
 $loginID = $_POST['uid'];
 $password = $_POST['pwd'];
-
-
 $sqlloginID = "SELECT loginID FROM user where loginID = '".$loginID."'";
 if ($result = mysqli_query($db,$sqlloginID)) {
         if ($row=mysqli_fetch_array($result)) {
@@ -16,6 +14,4 @@ if ($result = mysqli_query($db,$sqlloginID)) {
                 echo "<script>alert('註冊成功!將在確認之後跳回登入頁面'); location.href = 'http://localhost/beer_game-master/login.html';</script>";
         }
 }
-
 ?>
-
