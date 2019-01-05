@@ -58,20 +58,32 @@ function getRole()
         array_push($arr,$rs['role']);
     return $arr;
 }
-function update(){
+function update()
+{
+    $check = 0;
     global $db;
     $id= getCurrentID();
     $role=$_POST['role'];
-    
-    $sql = "UPDATE content SET role= ? where player = ?";
-	$stmt = mysqli_prepare($db, $sql); 
-	mysqli_stmt_bind_param($stmt, "ss", $role, $id);
-	mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt); 
-    
-    echo "<td>", $role, "</td></tr>";
+    for ($i = 0; $i < getCount(); $i++){
+        if (getRole()[$i] == $role){
+            $check = 0;
+            break;
+        }
+        else
+            $check = 1;
+    }
+    if ($check == 1){
+        $sql = "UPDATE content SET role= ? where player = ?";
+        $stmt = mysqli_prepare($db, $sql); 
+        mysqli_stmt_bind_param($stmt, "ss", $role, $id);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt); 
+        echo "<td>", $role, "</td></tr>";
+    } else if ($check == 0)
+        echo "<td>請重新選擇</td></tr>";
 }
-function check(){
+function check()
+{
     global $db;
     $id= getCurrentID();
     $sql = "select role from content where player = ?";
@@ -85,7 +97,8 @@ function check(){
     else
         return 1;
 }
-function del(){
+function del()
+{
     global $db, $RoomNo;
     $id = getCurrentID();
     if ($id == getLeader()){
@@ -111,5 +124,38 @@ function del(){
         mysqli_stmt_execute($stmt);
         header("Location: teamlist.php");
     }
+}
+function checkRole()
+{
+    global $db, $RoomNo;
+    $sql = "select COUNT(role) c from content where role is not null and roomNo = ?";
+    $stmt = mysqli_prepare($db, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $RoomNo);
+    mysqli_stmt_execute($stmt); //執行SQL
+    $result = mysqli_stmt_get_result($stmt);
+    $rs = mysqli_fetch_assoc($result);
+    if ($rs['c'] == 4)
+        return 1;
+    else
+        return 0;
+}
+function startgame(){
+    global $db, $RoomNo;
+    $id = getCurrentID();
+    if ($id == getLeader() && checkRole() == 1){
+        $sql = "UPDATE list SET status = 1 where roomNo =  ?";
+        $stmt = mysqli_prepare($db, $sql);
+        mysqli_stmt_bind_param($stmt, "i", $RoomNo);
+        mysqli_stmt_execute($stmt);
+    } else {
+        $sql = "select status from list where roomNo =  ?";
+        $stmt = mysqli_prepare($db, $sql);
+        mysqli_stmt_bind_param($stmt, "i", $RoomNo);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        $rs = mysqli_fetch_assoc($result);
+        return $rs['status'];
+    }
+    
 }
 ?>
