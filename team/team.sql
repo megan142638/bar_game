@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2019 年 01 月 05 日 02:54
+-- 產生時間： 2019 年 01 月 06 日 00:36
 -- 伺服器版本: 10.1.32-MariaDB
 -- PHP 版本： 7.2.5
 
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `content` (
   `roomNo` int(10) NOT NULL DEFAULT '1',
   `player` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `role` varchar(4) COLLATE utf8_unicode_ci NOT NULL
+  `role` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -44,7 +44,8 @@ CREATE TABLE `list` (
   `roomNo` int(11) NOT NULL,
   `name` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `leaderID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `count` int(10) NOT NULL
+  `count` int(10) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
