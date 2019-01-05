@@ -4,16 +4,29 @@
         <meta charset="UTF-8" />  
         <meta name="keywords" content=" " />
         <meta name="description" content=" " />
-		<link rel="Shortcut Icon" type="image/x-icon" href="http://localhost/beer_game-master/beer.png" />
+		<link rel="Shortcut Icon" type="image/x-icon" href="beer.png" />
         <title>Beer game註冊</title>
         <style type="text/css">
-        body{ 
-            font-size: 30px;
-            background-color: #beb452;
+        #joinFrm{
+              background-color: ;
+                display: inline-block;
+                font-size: 30px;
+				font-color:white;
+                padding: 50px; 
+				}
+		#h1{
+		font-size:60px;
+		}
+        body{            
+        background:url(https://img.technews.tw/wp-content/uploads/2017/10/06165558/beers-2447512_960_720-624x413.jpg);
+        -moz-background-size:cover;
+        -webkit-background-size:cover;
+        -o-background-size:cover;
+        background-size:cover;  
+		background-color: rgba(0,0,0,0.2);
+		
         }
-        joinFrm{
-            font-size: 20px;
-        }           
+        }         
         </style>
         <script>
             function readURL(input){
@@ -30,26 +43,26 @@
         </script>
 
     </head>
-    <body style="color:black">
+	
+    <body style="color:white">
         <center>
             <head1>
-                Beer game註冊
+			<div id="h1" >
+			<span style="font-family:標楷體,cursive;">
+                註冊帳號
             </head1>
+			</span>
+			</div>
         </center>
-
-        <div id="joinFrm">
+        <center>
+        <div id="joinFrm" >
 		    <fieldset>
 			    <legend>請填寫以下資料:</legend>
                 <table style="border:3px rgb(24, 19, 14) ;padding:5px;" rules="all" cellpadding='5' align='center'>
-                    <form enctype="multipart/form-data" action="upload.php" method="post">
+                    <form enctype="multipart/form-data" action="register.php" method="post">
                         <tr>
                             <td>id:</td>
                             <td><input type="text" name="uid"  placeholder="id" required></td>
-                        </tr>
-
-                        <tr>
-                            <td>上傳的圖片</td>
-                            <td><input type='file' id="file" name="photo" /></td>
                         </tr>
                         
                         <tr>
@@ -67,12 +80,14 @@
                                     <input type="reset" value="重設">
                                     <a href="login.html" style="font:100">返回登入頁面</a>
                                 </center>
+								
 
                             </td>
                         </tr>
                 </table>
             </fieldset>
         </div>
+		</center>
 <script>
         function validate() {
 	var pw1 = document.getElementById("pw1").value;
