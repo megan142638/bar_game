@@ -2,23 +2,29 @@
 require("dbconfig.php");
 $loginID = $_POST['uid'];
 $password = $_POST['pwd'];
-$sqlloginID = "SELECT loginID FROM user where loginID = '".$loginID."'";
-$filename=$_FILES['img']['name'];
-$tmpname=$_FILES['img']['tmp_name'];
-$filetype=$_FILES['img']['type'];
-$filesize=$_FILES['img']['size'];
-$fileContents;
 
-if ($_FILES["img"]["size"] > 0 ) {
-         //開啟圖片檔
-         $file = fopen($_FILES["img"]["tmp_name"], "rb");
-         // 讀入圖片檔資料
-         $fileContents = fread($file, filesize($_FILES["img"]["tmp_name"])); 
-         //關閉圖片檔
-         fclose($file);
-         // 圖片檔案資料編碼
-         $fileContents = base64_encode($fileContents);
+$arrTypes =array ("image/gif", "image/png", "image/jpeg", "image/pjpeg");
+if ($_FILES['pic']['error']==0) { // Error?
+   if (in_array($_FILES['pic']['type'], $arrTypes)) { // image type checking 
+      echo "Upload: " . $_FILES["pic"]["name"] . "<br />";
+      echo "Type: " . $_FILES["pic"]["type"] . "<br />";
+      echo "Size: " . round(($_FILES["pic"]["size"] / 1024),2) . " Kb<br />";
+      echo "Stored in: " . $_FILES["pic"]["tmp_name"]. "<br/>";
+      $target_path ="icon/";
+      $target_path .= $loginID.".png";
+      if (file_exists("icon/" . $loginID.".png")) {
+           return $loginID;
+      } else {
+         move_uploaded_file($_FILES["pic"]["tmp_name"],iconv("UTF-8","big5",$target_path));
+         echo "Image file Uploaded!";
+      }
+   } else { 
+   echo "Invalid File Format<br />";
+   }
+} else {
+   echo "Error: " . $_FILES["pic"]["error"] . "<br />";
 }
+/*
 if ($result = mysqli_query($db,$sqlloginID)) {
         if ($row=mysqli_fetch_array($result)) {
                 echo "<script>alert('ID已存在!將在確認之後跳回註冊頁面'); location.href = 'http://localhost/beer_game-master/register.html';</script>";
@@ -29,5 +35,5 @@ if ($result = mysqli_query($db,$sqlloginID)) {
                 mysqli_stmt_execute($stmt);
                 echo "<script>alert('註冊成功!將在確認之後跳回登入頁面'); location.href = 'http://localhost/beer_game-master/login.html';</script>";
         }
-}
+} */
 ?>

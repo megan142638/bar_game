@@ -14,6 +14,10 @@
 		body {
 			background-image: url(wood.jpeg);
 		}
+        a{
+            color:red;
+            text-align: center;
+        }
 	</style>
     <body>
  
@@ -21,19 +25,10 @@
 			<form enctype="multipart/form-data" action="register.php" method="post">
             <form>
                 <div class="formPanel">
-                  
-                    <fieldset>
-                       
+                                      
                     <h2>帳號註冊</h2>
-                    <p>輸入您的帳號及密碼</p>
-				
-              
-                    <fieldset>
-                        <legend>Account details</legend>
-								<img id="preview_img" width="350" height="400" src="#" /><br />
-            upload picture:　<input type="file" id = "pic" onchange="readURL(this)" targetID="preview_img" name="img" accept="image/gif, image/jpeg, image/png" required="required">
-    </fieldset>
-	<fieldset>
+                    <p>請輸入您的帳號及密碼</p>				                    
+	                    <fieldset>
                         <div class="formRow">
 				
         
@@ -52,28 +47,33 @@
                             <span class="inputAddOn"><i class="icon-lock"></i></span>
                             <input type="password"  placeholder="Confirm password" name="pwd" id="pw2" onkeyup="validate()"/><span id="tishi"></span>
                         </div>
+                        <div class="formRow">
+                            <label for="icon">icon</label>
+                            <span class="inputAddOn"><i class="icon-user"></i></span>
+                            <input type="file" name="pic" id="icon" onchange="readURL(this)" targetID="preview_img" required/>
+                            <img id="preview_img" width="350" height="400" src="#" />   
+                        </div>
                         <button type="submit" class="buttonSubmit" >Submit	</button>
-						<button type="reset" class="buttonReset" >reset	</button>
-						<a href="login.html" style="font:100" font color="blue">返回登入頁面</a>
+						<button type="reset" class="buttonReset" >reset	</button> 
+						<a href="login.html" style="font:100" >&nbsp; &nbsp; 返回登入頁面</a>
                     </fieldset>
                 </div>
             </form>
         </div>
 		<script>
         function validate() {
-	                         var pw1 = document.getElementById("pw1").value;
-	var pw2 = document.getElementById("pw2").value;
-	if(pw1 == pw2) {
-		document.getElementById("tishi").innerHTML="<font color='green'>兩次密碼相同</font>";
-		document.getElementById("submit").disabled = false;
-	}
-	else {
-		document.getElementById("tishi").innerHTML="<font color='red'>兩次密碼不相同</font>";
-		document.getElementById("submit").disabled = true;
-	}
-}
-</script>
-
+	        var pw1 = document.getElementById("pw1").value;
+	        var pw2 = document.getElementById("pw2").value;
+            if(pw1 == pw2) {
+                document.getElementById("tishi").innerHTML="<font color='green'>兩次密碼相同</font>";
+                document.getElementById("submit").disabled = false;
+            }
+            else {
+                document.getElementById("tishi").innerHTML="<font color='red'>兩次密碼不相同</font>";
+                document.getElementById("submit").disabled = true;
+            }
+        }
+        </script>
         <!-- Javascript -->
         <script src="js/jquery.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
@@ -83,8 +83,8 @@
             $('body').phizzForms({
             });
         </script>
-<div style="text-align:center;clear:both">
+        <div style="text-align:center;clear:both">
 
-</div>
+        </div>
     </body>
 </html>
