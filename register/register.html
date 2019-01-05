@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />  
+        <meta name="keywords" content=" " />
+        <meta name="description" content=" " />
+        <link rel="Shortcut Icon" type="image/x-icon" href="http://localhost/beer_game-master/beer.png" />
+        <title>Beer game註冊</title>
+        <style type="text/css">
+        body{ 
+            font-size: 30px;
+            background-color: #beb452;
+        }
+        joinFrm{
+            font-size: 20px;
+        }           
+        </style>
+        <script>
+            function readURL(input){
+                if(input.files && input.files[0]){
+                var imageTagID = input.getAttribute("targetID");
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = document.getElementById(imageTagID);
+                    img.setAttribute("src", e.target.result)
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+            }
+        </script>
+
+    </head>
+    <body style="color:black">
+        <center>
+            <head1>
+                Beer game註冊
+            </head1>
+        </center>
+
+        <div id="joinFrm">
+            <fieldset>
+                <legend>請填寫以下資料:</legend>
+                <table style="border:3px rgb(24, 19, 14) ;padding:5px;" rules="all" cellpadding='5' align='center'>
+                    <form enctype="multipart/form-data" action="register.php" method="post">
+                        <tr>
+                            <td>id:</td>
+                            <td><input type="text" name="uid"  placeholder="id" required></td>
+                        </tr>
+
+                        
+                        
+                        <tr>
+                            <td>密碼:</td>
+                            <td><input type="password" name="pwd" id="pw1" required></td>
+                        </tr>
+                        <tr>
+                            <td>確認密碼:</td>
+                            <td><input type="password" name="pwd" id="pw2" onkeyup="validate()"/><span id="tishi"></span></td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                                <center>
+                                    <input type="submit" value="註冊" id="submit"/>
+                                    <input type="reset" value="重設">
+                                    <a href="login.html" style="font:100">返回登入頁面</a>
+                                </center>
+
+                            </td>
+                        </tr>
+                </table>
+            </fieldset>
+        </div>
+<script>
+        function validate() {
+    var pw1 = document.getElementById("pw1").value;
+    var pw2 = document.getElementById("pw2").value;
+    if(pw1 == pw2) {
+        document.getElementById("tishi").innerHTML="<font color='green'>兩次密碼相同</font>";
+        document.getElementById("submit").disabled = false;
+    }
+    else {
+        document.getElementById("tishi").innerHTML="<font color='red'>兩次密碼不相同</font>";
+        document.getElementById("submit").disabled = true;
+    }
+}
+</script>
+            
+        </body>
+</html>
