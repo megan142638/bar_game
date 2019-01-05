@@ -30,7 +30,13 @@
               
                     <fieldset>
                         <legend>Account details</legend>
+								<img id="preview_img" width="350" height="400" src="#" /><br />
+            upload picture:　<input type="file" id = "pic" onchange="readURL(this)" targetID="preview_img" name="img" accept="image/gif, image/jpeg, image/png" required="required">
+    </fieldset>
+	<fieldset>
                         <div class="formRow">
+				
+        
                             <label for="username">Username</label>
                             <span class="inputAddOn"><i class="icon-user"></i></span>
                             <input type="text" placeholder="Username" name="uid" required>
