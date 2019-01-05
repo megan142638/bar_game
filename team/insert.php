@@ -35,11 +35,6 @@ if ($name) {
 	mysqli_stmt_bind_param($stmt, "iss", $No, $id, $role); //bind parameters with variables
 	mysqli_stmt_execute($stmt);  //執行SQL
     
-    /*$sql = "select roomNo from list where leaderID= ?";
-    $stmt = mysqli_prepare($db, $sql);
-    mysqli_stmt_bind_param($stmt, "s", $id);
-    mysqli_stmt_execute($stmt); //執行SQL
-    $result = mysqli_stmt_get_result($stmt);*/
 	header("Location: Room.php?roomNo=$No");
 } else {
 	echo "error";
