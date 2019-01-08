@@ -51,7 +51,10 @@ $result=getTeamList();
                         "</td><td>" , $rs['name'],
                         "</td><td>" , $rs['leaderID'],
                         "</td><td>" , $rs['count'],"</td>";
-                        echo '<td><a href="add2Team.php?roomNo=', $rs['roomNo'],'">進入隊伍</a></td></tr>';
+                    if ($rs['count'] < 4)
+                        echo '<td><a href="add2Team.php?roomNo=', $rs['roomNo'],'">加入</a></td></tr>';
+                    else 
+                        echo "<td>人數已滿</td>";
                     }
                 ?>                
             </tr>
