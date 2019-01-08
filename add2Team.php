@@ -1,3 +1,4 @@
+<link rel="Shortcut Icon" type="image/x-icon" href="http://localhost/beer_game-master/beer.png" />
 <?php
 require("userModel.php");
 

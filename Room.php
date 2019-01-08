@@ -16,6 +16,7 @@ $ready = checkRole();
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="Shortcut Icon" type="image/x-icon" href="http://localhost/beer_game-master/beer.png" />
 <title>房間</title>
 <meta http-equiv="refresh" content="3" />
 </head>

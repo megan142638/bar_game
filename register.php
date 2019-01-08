@@ -15,7 +15,7 @@ if ($result = mysqli_query($db,$sqlloginID)) {
                 print_r($stmt);
 
                 echo "<script>alert('註冊成功!將在確認之後跳回登入頁面'); location.href = 'http://localhost/beer_game-master/login.php';</script>";
-                
+                echo "<script>alert('註冊成功!將在確認之後跳回登入頁面'); location.href = 'http://localhost/beer_game-master/login.html';</script>";
 
         }
 }
