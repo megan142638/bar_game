@@ -22,16 +22,18 @@ $ready = checkRole();
 
 <body>
 
-<h1>房間號碼:<?php echo $RoomNo; ?> 房間名稱:<?php echo $RoomName; ?> 你是:<?php echo $id; ?></h1>
+<h1>房間號碼:<?php echo $RoomNo; ?> 房間名稱:<?php echo $RoomName; ?></h1>
+<h2>隊長:<?php echo $leader; ?> 你是:<?php echo $id; ?></h2>
 <hr />
-<table width="400" border="1" class="">
-  <tr><th>玩家</th><th>角色</th>
+<table width="600" border="1" class="">
+  <tr><th>大頭貼</th><th>玩家</th><th>角色</th>
 <?php 
 $set = 0;
 if ($id != $leader && check() && $set == 0)
     echo "<th>選擇角色</th></tr>";
 for($i = 0; $i < $count; $i++){
-    echo "<tr><td>", $player[$i], "</td>";
+    echo '<tr><td><img src="../../icon/', $player[$i], '.png" /></td>';
+    echo "<td>", $player[$i], "</td>";
     if($role[$i])
         echo "<td>", $role[$i], "</td></tr>";
     else if (check() && $set == 0){
