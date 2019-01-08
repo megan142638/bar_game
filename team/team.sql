@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2019 年 01 月 06 日 00:36
+-- 產生時間： 2019 年 01 月 08 日 17:19
 -- 伺服器版本: 10.1.32-MariaDB
 -- PHP 版本： 7.2.5
 
@@ -68,7 +68,8 @@ INSERT INTO `user` (`uid`, `loginID`, `password`) VALUES
 (1, 'test', '123'),
 (2, 'adm', '123'),
 (3, 'test1', '123'),
-(4, 'abc', '123');
+(4, 'abc', '123'),
+(5, 'aaa', '123');
 
 --
 -- 已匯出資料表的索引
@@ -100,13 +101,13 @@ ALTER TABLE `user`
 -- 使用資料表 AUTO_INCREMENT `list`
 --
 ALTER TABLE `list`
-  MODIFY `roomNo` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `roomNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- 使用資料表 AUTO_INCREMENT `user`
 --
 ALTER TABLE `user`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
