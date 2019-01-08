@@ -10,17 +10,17 @@ function getRoomName()
     $rs = mysqli_fetch_assoc($result);
     return $rs['name'];
 }
-function getPlayer() 
+function getPlayer()
 {
     global $db, $RoomNo;
-    $sql = "select player from content where roomNo = ?";
+    $sql = "select loginID from content where roomNo = ?";
     $stmt = mysqli_prepare($db, $sql);
     mysqli_stmt_bind_param($stmt, "i", $RoomNo);
     mysqli_stmt_execute($stmt); //執行SQL
     $result = mysqli_stmt_get_result($stmt); 
     $arr = array();
     while($rs = mysqli_fetch_assoc($result))
-        array_push($arr,$rs['player']);
+        array_push($arr,$rs['loginID']);
     return $arr;
 }
 function getCount() 
@@ -73,7 +73,7 @@ function update()
             $check = 1;
     }
     if ($check == 1){
-        $sql = "UPDATE content SET role= ? where player = ?";
+        $sql = "UPDATE content SET role= ? where loginID = ?";
         $stmt = mysqli_prepare($db, $sql); 
         mysqli_stmt_bind_param($stmt, "ss", $role, $id);
         mysqli_stmt_execute($stmt);
@@ -86,7 +86,7 @@ function check()
 {
     global $db;
     $id= getCurrentID();
-    $sql = "select role from content where player = ?";
+    $sql = "select role from content where loginID = ?";
     $stmt = mysqli_prepare($db, $sql);
     mysqli_stmt_bind_param($stmt, "s", $id);
     mysqli_stmt_execute($stmt); //執行SQL
@@ -113,7 +113,7 @@ function del()
         mysqli_stmt_execute($stmt);
         header("Location: teamlist.php");
     } else {
-        $sql = "DELETE FROM content WHERE player = ?";
+        $sql = "DELETE FROM content WHERE loginID = ?";
         $stmt = mysqli_prepare($db, $sql);
         mysqli_stmt_bind_param($stmt, "s", $id);
         mysqli_stmt_execute($stmt);

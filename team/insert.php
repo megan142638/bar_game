@@ -30,7 +30,7 @@ if ($name) {
     $rs = mysqli_fetch_assoc($result);
     $No = $rs['roomNo'];
     
-	$sql = "insert into content (roomNo, player, role) values (?, ?, ?)";
+	$sql = "insert into content (roomNo, loginID, role) values (?, ?, ?)";
 	$stmt = mysqli_prepare($db, $sql); //prepare sql statement
 	mysqli_stmt_bind_param($stmt, "iss", $No, $id, $role); //bind parameters with variables
 	mysqli_stmt_execute($stmt);  //執行SQL
