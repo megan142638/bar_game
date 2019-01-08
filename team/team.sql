@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2019 年 01 月 08 日 17:19
+-- 產生時間： 2019 年 01 月 08 日 19:56
 -- 伺服器版本: 10.1.32-MariaDB
 -- PHP 版本： 7.2.5
 
@@ -30,9 +30,17 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `content` (
   `roomNo` int(10) NOT NULL DEFAULT '1',
-  `player` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `loginID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `role` varchar(4) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- 資料表的匯出資料 `content`
+--
+
+INSERT INTO `content` (`roomNo`, `loginID`, `role`) VALUES
+(11, 'adm', '工廠'),
+(11, 'test', '零售商');
 
 -- --------------------------------------------------------
 
@@ -48,6 +56,13 @@ CREATE TABLE `list` (
   `status` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- 資料表的匯出資料 `list`
+--
+
+INSERT INTO `list` (`roomNo`, `name`, `leaderID`, `count`, `status`) VALUES
+(11, 'test', 'test', 2, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -55,7 +70,6 @@ CREATE TABLE `list` (
 --
 
 CREATE TABLE `user` (
-  `uid` int(11) NOT NULL,
   `loginID` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -64,12 +78,12 @@ CREATE TABLE `user` (
 -- 資料表的匯出資料 `user`
 --
 
-INSERT INTO `user` (`uid`, `loginID`, `password`) VALUES
-(1, 'test', '123'),
-(2, 'adm', '123'),
-(3, 'test1', '123'),
-(4, 'abc', '123'),
-(5, 'aaa', '123');
+INSERT INTO `user` (`loginID`, `password`) VALUES
+('aaa', '123'),
+('abc', '123'),
+('adm', '123'),
+('test', '123'),
+('test1', '123');
 
 --
 -- 已匯出資料表的索引
@@ -79,7 +93,7 @@ INSERT INTO `user` (`uid`, `loginID`, `password`) VALUES
 -- 資料表索引 `content`
 --
 ALTER TABLE `content`
-  ADD PRIMARY KEY (`player`);
+  ADD PRIMARY KEY (`loginID`);
 
 --
 -- 資料表索引 `list`
@@ -91,7 +105,7 @@ ALTER TABLE `list`
 -- 資料表索引 `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`uid`);
+  ADD PRIMARY KEY (`loginID`);
 
 --
 -- 在匯出的資料表使用 AUTO_INCREMENT
@@ -101,13 +115,7 @@ ALTER TABLE `user`
 -- 使用資料表 AUTO_INCREMENT `list`
 --
 ALTER TABLE `list`
-  MODIFY `roomNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- 使用資料表 AUTO_INCREMENT `user`
---
-ALTER TABLE `user`
-  MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `roomNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
