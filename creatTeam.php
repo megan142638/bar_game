@@ -4,26 +4,54 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>創立隊伍</title>
 <link rel="stylesheet" type="text/css" href="main.css">
+ <style type="text/css">
+ @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+ 
+            body{		
+				font-family: 'Noto Sans TC';
+                font-size: 30px;
+                background:url(http://localhost/beer_game-master/wood.jpg);
+                -moz-background-size:cover;
+                -webkit-background-size:cover;
+                -o-background-size:cover;
+                background-size:cover;
+            }
+            table {
+              
+            }   
+            .choice {
+              text-align: center;
+            }
+
+        </style>
 </head>
 
 <body>
 
-<p>創建隊伍</p>
+ <h1 align="center" style="color:white">創建隊伍</h1>
 <hr />
+<center>
 <form method="post" action="insert.php">
-<table width="400" border="1" class="">
+<table width="680" border="1" style="background-color:#90EE90;" >
   <tr>
-    <td>隊伍名稱</td><td><input type="text" name="title" required/></td></tr>
+    <td width=150>隊伍名稱</td>
+	<td>
+	<input type="text" name="title" maxlength="10" required/></td></tr>
+	<a style="color:yellow" font size="20">請輸入10位元以內</a>
   <tr>
-    <td>選擇角色</td><td>
+    <td>選擇角色</td>
+	 <td id = "choice">
     <input type="radio" name="role" value="零售商" checked/> 零售商
     <input type="radio" name="role" value="批發商" /> 批發商
     <input type="radio" name="role" value="大盤商" /> 大盤商
     <input type="radio" name="role" value="工廠" /> 工廠
     </td></tr>
     <tr><td colspan="2" style="text-align:center">
-    <input type="submit" /> <input type="reset" /></td></tr>
+    <input type="submit" value="創建"/> <input type="reset" /></td></tr>
 </table>
-<a href='teamlist.php'>返回隊伍列表</a>
+</center>
+<center>
+<input type="button" value="返回隊伍列表" onclick="location.href='teamlist.php'">
+</center>
 </body>
 </html>

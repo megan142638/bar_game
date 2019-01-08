@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Beer game註冊</title>
+
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+        <!-- Custom Google font -->
+        <link href='http://fonts.googleapis.com/css?family=Lato:400' rel='stylesheet' type='text/css'>
+
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+
+        <link href="css/styles.min.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+ 
+        <div id="phizzForm" class="form">
+            <form>
+                <div class="formPanel">
+                    <div class="errors"><i class="icon-exclamation-sign"></i>
+						Oops! You&#39;ve entered some incorrect details.</div>
+                    <fieldset>
+                       
+                    <h2>帳號註冊</h2>
+                    <p>輸入您的帳號及密碼</p>
+					<form enctype="multipart/form-data" action="register.php" method="post">
+                    <div class="errors"><i class="icon-exclamation-sign"></i>
+						Oops! You&#39;ve entered some incorrect details.</div>
+                    <fieldset>
+                        <legend>Account details</legend>
+                        <div class="formRow">
+                            <label for="username">Username</label>
+                            <span class="inputAddOn"><i class="icon-user"></i></span>
+                            <input type="text" value="" placeholder="Username" name="uid" required>
+                            
+                        </div>
+                        <div class="formRow">
+                            <label for="password">Password</label>
+                            <span class="inputAddOn"><i class="icon-lock"></i></span>
+                            <input type="text" value="" placeholder="Password" name="pwd" id="pw1" required>      
+                        </div>
+                        <div class="formRow">
+                            <label for="passwordConfirm">Confirm password</label>
+                            <span class="inputAddOn"><i class="icon-lock"></i></span>
+                            <input type="text" value="" placeholder="Confirm password" name="pwd" id="pw2" onkeyup="validate()"/><span id="tishi"></span>
+                        </div>
+                        <button class="buttonSubmit">Submit</button>
+						<a href="login.html" style="font:100">返回登入頁面</a>
+                    </fieldset>
+                </div>
+            </form>
+        </div>
+		<script>
+        function validate() {
+	                         var pw1 = document.getElementById("pw1").value;
+	var pw2 = document.getElementById("pw2").value;
+	if(pw1 == pw2) {
+		document.getElementById("tishi").innerHTML="<font color='green'>兩次密碼相同</font>";
+		document.getElementById("submit").disabled = false;
+	}
+	else {
+		document.getElementById("tishi").innerHTML="<font color='red'>兩次密碼不相同</font>";
+		document.getElementById("submit").disabled = true;
+	}
+}
+</script>
+
+        <!-- Javascript -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/scripts.min.js"></script>
+
+        <script>
+            $('body').phizzForms({
+            });
+        </script>
+<div style="text-align:center;clear:both">
+
+</div>
+    </body>
+</html>

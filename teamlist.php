@@ -22,7 +22,9 @@ $result=getTeamList();
         <title>隊伍列表</title>
         <center><h1>隊伍列表</h1></center>
         <style type="text/css">
+		 @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
             body{ 
+			font-family: 'Noto Sans TC';
                 font-size: 20px;
                 background:url(wood.jpeg);
                 -moz-background-size:cover;
@@ -61,11 +63,9 @@ $result=getTeamList();
             <tr>
                 <td colspan="5">
                     <center>
-                        <?php
-                            //<input type='button' name='Submit' value='入库' onclick='location.href='insert.php?a=1''/>          
-                            echo "<a href='creatTeam.php'>創建隊伍 </a> <br>";
-                            echo "<a href='logout.php'>登出</a>";
-                        ?>
+                       
+						<input type="button" value="創建隊伍" onclick="location.href='creatTeam.php'">
+						<input type="button" value="登出" onclick="location.href='logout.php'">
                     </center>
                 </td>
             </tr>
