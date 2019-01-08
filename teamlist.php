@@ -26,7 +26,7 @@ $result=getTeamList();
             body{ 
 			font-family: 'Noto Sans TC';
                 font-size: 20px;
-                background:url(wood.jpeg);
+                background:url(http://localhost/beer_game-master/wood.jpg);
                 -moz-background-size:cover;
                 -webkit-background-size:cover;
                 -o-background-size:cover;
