@@ -68,12 +68,12 @@ else if (!$leader)
 
 if (isset($_POST['start'])){
     startgame();
-    header("Location: teamlist.php");
+    header("Location: orderView.php");
 } else if ($id == $leader && $ready){
     echo '<form method="post" action="">';
     echo '<input type="submit" name="start" value="開始遊戲" /></form>';
 } else if (startgame() == 1)
-    header("Location: teamlist.php");
+    header("Location: orderView.php");
 ?>
 </body>
 </html>
