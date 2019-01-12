@@ -9,8 +9,9 @@ $RoomName = getRoomName();
 $player = getPlayer();
 $count = getCount();
 $leader = getLeader();
-$role = getRole();
-$ready = checkRole();
+$role = getAllRole();
+//$ready = checkRole();
+$status = checkStatus();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -32,7 +33,7 @@ $set = 0;
 if ($id != $leader && check() && $set == 0)
     echo "<th>選擇角色</th></tr>";
 for($i = 0; $i < $count; $i++){
-    echo '<tr><td><img src="../../icon/', $player[$i], '.png" /></td>';
+    echo '<tr><td><img src="icon/', $player[$i], '.png" /></td>';
     echo "<td>", $player[$i], "</td>";
     if($role[$i])
         echo "<td>", $role[$i], "</td></tr>";
@@ -41,13 +42,13 @@ for($i = 0; $i < $count; $i++){
         if (isset($_POST['role']))
             update();
         else {
-            $arr = array("零售商","批發商","大盤商","工廠");
+            $arr = array("retailer","wholesaler","distributor","factory");
             for ($j = 0; $j < $count; $j++)
                 if($role[$j])
                     for ($k = 0; $k < count($arr); $k++)
                         if ($role[$j] == $arr[$k])
                             array_splice($arr,$k,1);
-            echo "<form method=\"post\" action=\"\"><td rowspan =", $count,">";
+            echo "<form method=\"post\"><td rowspan =", $count,">";
             for ($l = 0; $l < count($arr); $l++)
                 echo '<input type="radio" name="role" value="',$arr[$l],'"/>', $arr[$l] ,'</br>';
             echo '<input type="submit" /></td></form></tr>';
@@ -61,19 +62,22 @@ for($i = 0; $i < $count; $i++){
 <input type="submit" name="Button" value="退出房間" />
 </form>
 <?php
+if ($status == 1)
+    header("Location: orderView.php?roomNo=$RoomNo");
+
 if (isset($_POST['Button']))
     del();
 else if (!$leader)
     header("Location: teamlist.php");
 
-if (isset($_POST['start'])){
+/*if (isset($_POST['start'])){
     startgame();
     header("Location: orderView.php");
 } else if ($id == $leader && $ready){
     echo '<form method="post" action="">';
     echo '<input type="submit" name="start" value="開始遊戲" /></form>';
 } else if (startgame() == 1)
-    header("Location: orderView.php");
+    header("Location: orderView.php");*/
 ?>
 </body>
 </html>

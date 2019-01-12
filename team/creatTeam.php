@@ -16,14 +16,20 @@
     <td>隊伍名稱</td><td><input type="text" name="title" required/></td></tr>
   <tr>
     <td>選擇角色</td><td>
-    <input type="radio" name="role" value="零售商" checked/> 零售商
-    <input type="radio" name="role" value="批發商" /> 批發商
-    <input type="radio" name="role" value="大盤商" /> 大盤商
-    <input type="radio" name="role" value="工廠" /> 工廠
+    <input type="radio" name="role" value="retailer" checked/> 零售商
+    <input type="radio" name="role" value="wholesaler" /> 批發商
+    <input type="radio" name="role" value="distributor" /> 大盤商
+    <input type="radio" name="role" value="factory" /> 工廠
     </td></tr>
     <tr><td colspan="2" style="text-align:center">
     <input type="submit" /> <input type="reset" /></td></tr>
-</table>
-<a href='teamlist.php'>返回隊伍列表</a>
+</table></form>
+<form method="post">
+<input type="submit" name="back" value="返回隊伍列表" />
+</form>
+<?php
+if (isset($_POST['back']))
+    header("Location: teamlist.php");
+?>
 </body>
 </html>

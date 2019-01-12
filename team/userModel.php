@@ -4,6 +4,7 @@ function login($id, $pwd)
 {
     global $db;
     $_SESSION['ID'] = '';
+    $_SESSION['per'] = '';
     if ($id> " ") {
         $sql = "select * from user where loginID=? and password=?";
         $stmt = mysqli_prepare($db, $sql);
@@ -13,6 +14,7 @@ function login($id, $pwd)
         $r = mysqli_fetch_assoc($result);
         if($r) {
             $_SESSION['ID'] = $id;
+            $_SESSION['per'] = $r['Permission'];
             return 1;
         } else {
             return 0;
@@ -24,5 +26,9 @@ function login($id, $pwd)
 function getCurrentID()
 {
     return $_SESSION['ID'];
+}
+function getPermission()
+{
+    return $_SESSION['per'];
 }
 ?>

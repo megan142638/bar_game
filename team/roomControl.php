@@ -45,7 +45,7 @@ function getLeader()
     $rs = mysqli_fetch_assoc($result);
     return $rs['leaderID'];
 }
-function getRole()
+function getAllRole()
 {
     global $db, $RoomNo;
     $sql = "select role from content where roomNo = ?";
@@ -65,7 +65,7 @@ function update()
     $id= getCurrentID();
     $role=$_POST['role'];
     for ($i = 0; $i < getCount(); $i++){
-        if (getRole()[$i] == $role){
+        if (getAllRole()[$i] == $role){
             $check = 0;
             break;
         }
@@ -125,7 +125,7 @@ function del()
         header("Location: teamlist.php");
     }
 }
-function checkRole()
+/*function checkRole()
 {
     global $db, $RoomNo;
     $sql = "select COUNT(role) c from content where role is not null and roomNo = ?";
@@ -156,6 +156,16 @@ function startgame(){
         $rs = mysqli_fetch_assoc($result);
         return $rs['status'];
     }
-    
+}*/
+function checkStatus()
+{
+    global $db, $RoomNo;
+    $sql = "select status from list where roomNo = ?";
+    $stmt = mysqli_prepare($db, $sql);
+    mysqli_stmt_bind_param($stmt, "i", $RoomNo);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $rs = mysqli_fetch_assoc($result);
+    return $rs['status'];
 }
 ?>
