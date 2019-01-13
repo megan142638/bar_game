@@ -66,7 +66,7 @@ $per=getPermission();
 
 <body>
 
-<p>Team List !!</p>
+<h1>Team List</h1>
 <hr />
 <table width="600" border="1" class="table table-hover">
   <tr class = "table-info">
