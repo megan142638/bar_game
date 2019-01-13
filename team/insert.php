@@ -22,7 +22,7 @@ if ($name) {
 	mysqli_stmt_bind_param($stmt, "ss", $name, $id); //bind parameters with variables
 	mysqli_stmt_execute($stmt);  //執行SQL
     
-    $sql = "select roomNo from list where leaderID = ?";
+    $sql = "select roomNo from list where leaderID = ? and status != 2";
     $stmt = mysqli_prepare($db, $sql);
     mysqli_stmt_bind_param($stmt, "s", $id);
     mysqli_stmt_execute($stmt); //執行SQL

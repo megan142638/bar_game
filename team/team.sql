@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2019 年 01 月 14 日 02:11
+-- 產生時間： 2019 年 01 月 13 日 02:45
 -- 伺服器版本: 10.1.32-MariaDB
 -- PHP 版本： 7.2.5
 
@@ -43,9 +43,9 @@ INSERT INTO `admset` (`week`, `demand`) VALUES
 (3, 10),
 (4, 10),
 (5, 10),
-(6, 10),
-(7, 10),
-(8, 10),
+(6, 29),
+(7, 9),
+(8, 20),
 (9, 26),
 (10, 14),
 (11, 11),
@@ -113,8 +113,7 @@ CREATE TABLE `distributor` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
-  `Allcost` int(10) NOT NULL,
-  `send` int(2) DEFAULT NULL
+  `send` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -129,8 +128,7 @@ CREATE TABLE `factory` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
-  `Allcost` int(10) NOT NULL,
-  `send` int(2) DEFAULT NULL
+  `send` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -160,19 +158,6 @@ CREATE TABLE `period` (
 -- --------------------------------------------------------
 
 --
--- 資料表結構 `rank`
---
-
-CREATE TABLE `rank` (
-  `roomNo` int(11) NOT NULL,
-  `name` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `leaderID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `score` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- 資料表結構 `retailer`
 --
 
@@ -182,8 +167,7 @@ CREATE TABLE `retailer` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
-  `Allcost` int(10) NOT NULL,
-  `send` int(2) DEFAULT NULL
+  `send` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -222,8 +206,7 @@ CREATE TABLE `wholesaler` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
-  `Allcost` int(10) NOT NULL,
-  `send` int(2) DEFAULT NULL
+  `send` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -267,12 +250,6 @@ ALTER TABLE `period`
   ADD PRIMARY KEY (`week`);
 
 --
--- 資料表索引 `rank`
---
-ALTER TABLE `rank`
-  ADD PRIMARY KEY (`roomNo`);
-
---
 -- 資料表索引 `retailer`
 --
 ALTER TABLE `retailer`
@@ -305,12 +282,6 @@ ALTER TABLE `admset`
 --
 ALTER TABLE `list`
   MODIFY `roomNo` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- 使用資料表 AUTO_INCREMENT `rank`
---
-ALTER TABLE `rank`
-  MODIFY `roomNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

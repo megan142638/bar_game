@@ -1,13 +1,5 @@
 <?php
 require("dbconfig.php");
-/*$dem = 0;
-for ($i = 0; $i < 50; $i++){
-    global $db;
-    $sql = "INSERT INTO `admset`(`demand`) VALUES (0)";
-    $stmt = mysqli_prepare($db, $sql);
-    //mysqli_stmt_bind_param($stmt, "i", $dem);
-	mysqli_stmt_execute($stmt); 
-}*/
 function update()
 {
     global $db;

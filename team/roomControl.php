@@ -125,38 +125,6 @@ function del()
         header("Location: teamlist.php");
     }
 }
-/*function checkRole()
-{
-    global $db, $RoomNo;
-    $sql = "select COUNT(role) c from content where role is not null and roomNo = ?";
-    $stmt = mysqli_prepare($db, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $RoomNo);
-    mysqli_stmt_execute($stmt); //執行SQL
-    $result = mysqli_stmt_get_result($stmt);
-    $rs = mysqli_fetch_assoc($result);
-    if ($rs['c'] == 4)
-        return 1;
-    else
-        return 0;
-}
-function startgame(){
-    global $db, $RoomNo;
-    $id = getCurrentID();
-    if ($id == getLeader() && checkRole() == 1){
-        $sql = "UPDATE list SET status = 1 where roomNo =  ?";
-        $stmt = mysqli_prepare($db, $sql);
-        mysqli_stmt_bind_param($stmt, "i", $RoomNo);
-        mysqli_stmt_execute($stmt);
-    } else {
-        $sql = "select status from list where roomNo =  ?";
-        $stmt = mysqli_prepare($db, $sql);
-        mysqli_stmt_bind_param($stmt, "i", $RoomNo);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        $rs = mysqli_fetch_assoc($result);
-        return $rs['status'];
-    }
-}*/
 function checkStatus()
 {
     global $db, $RoomNo;

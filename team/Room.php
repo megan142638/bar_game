@@ -10,7 +10,6 @@ $player = getPlayer();
 $count = getCount();
 $leader = getLeader();
 $role = getAllRole();
-//$ready = checkRole();
 $status = checkStatus();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -70,14 +69,6 @@ if (isset($_POST['Button']))
 else if (!$leader)
     header("Location: teamlist.php");
 
-/*if (isset($_POST['start'])){
-    startgame();
-    header("Location: orderView.php");
-} else if ($id == $leader && $ready){
-    echo '<form method="post" action="">';
-    echo '<input type="submit" name="start" value="開始遊戲" /></form>';
-} else if (startgame() == 1)
-    header("Location: orderView.php");*/
 ?>
 </body>
 </html>

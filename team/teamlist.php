@@ -36,7 +36,7 @@ function startgame($RoomNo){
     
     $arr = array("retailer","wholesaler","distributor","factory");
     for ($i = 0; $i < 4; $i++){
-        $sql = "INSERT INTO ".$arr[$i]."(week,store,debt,cost) VALUES (1,15,0,15)";
+        $sql = "INSERT INTO ".$arr[$i]."(week,store,debt,cost,Allcost) VALUES (1,15,0,15,15)";
         $stmt = mysqli_prepare($db, $sql);
         mysqli_stmt_execute($stmt);
     }
@@ -77,24 +77,27 @@ $per=getPermission();
   </tr>
 <?php
 while ($rs = mysqli_fetch_assoc($result)) {
-	echo "<tr><td>" , $rs['roomNo'] ,
-	"</td><td>" , $rs['name'],
-	"</td><td>" , $rs['leaderID'],
-	"</td><td>" , $rs['count'],"</td>";
-    if ($rs['count'] < 4 && $per != 1)
-        echo '<td><a href="add2Team.php?roomNo=', $rs['roomNo'],'">加入</a></td></tr>';
-    else {
-        if (isset($_POST['butt']))
-            startgame($rs['roomNo']);
-        else if ($per == 1 && checkRole($rs['roomNo']) == 1 && checkstatus($rs['roomNo']) == 0) {
-            echo '<form method="post">';
-            echo '<td><input type="submit" name="butt" value="開始遊戲" /></td></form>';
+    if (checkstatus($rs['roomNo']) != 2){
+        echo "<tr><td>" , $rs['roomNo'] ,
+        "</td><td>" , $rs['name'],
+        "</td><td>" , $rs['leaderID'],
+        "</td><td>" , $rs['count'],"</td>";
+        if ($rs['count'] < 4 && $per != 1)
+            echo '<td><a href="add2Team.php?roomNo=', $rs['roomNo'],'">加入</a></td></tr>';
+        else {
+            if (isset($_POST['butt']))
+                startgame($rs['roomNo']);
+            else if ($per == 1 && checkRole($rs['roomNo']) == 1 && checkstatus($rs['roomNo']) == 0) {
+                echo '<form method="post">';
+                echo '<td><input type="submit" name="butt" value="開始遊戲" /></td></form>';
+            }
+            else if (checkstatus($rs['roomNo']) == 1)
+                echo "<td>遊戲中</td>";
+            else if ($per != 1)
+                echo "<td>人數已滿</td>";
         }
-        else if (checkstatus($rs['roomNo']) == 1)
-            echo "<td>遊戲中</td>";
-        else if ($per != 1)
-            echo "<td>人數已滿</td>";
     }
+	
 }
 echo "</table>";
 if ($per == 1){
