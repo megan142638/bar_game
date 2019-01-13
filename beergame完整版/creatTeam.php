@@ -1,58 +1,36 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+  <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="Shortcut Icon" type="image/x-icon" href="http://localhost/beergame完整版/beer.png" />
 <title>創立隊伍</title>
 <link rel="stylesheet" type="text/css" href="main.css">
- <style type="text/css">
- @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
- 
-            body{		
-				font-family: 'Noto Sans TC';
-                font-size: 30px;
-                background:url(http://localhost/beergame完整版/wood.jpg);
-                -moz-background-size:cover;
-                -webkit-background-size:cover;
-                -o-background-size:cover;
-                background-size:cover;
-            }
-            table {
-              
-            }   
-            .choice {
-              text-align: center;
-            }
-
-        </style>
 </head>
 
 <body>
 
- <h1 align="center" style="color:white">創建隊伍</h1>
+<p>創建隊伍</p>
 <hr />
-<center>
 <form method="post" action="insert.php">
-<table width="680" border="1" style="background-color:#90EE90;" >
-  <tr>
-    <td width=150>隊伍名稱</td>
-	<td>
-	<input type="text" name="title" maxlength="10" required/></td></tr>
-	<a style="color:yellow" font size="20">請輸入10位元以內</a>
-  <tr>
-    <td>選擇角色</td>
-	 <td id = "choice">
-    <input type="radio" name="role" value="零售商" checked/> 零售商
-    <input type="radio" name="role" value="批發商" /> 批發商
-    <input type="radio" name="role" value="大盤商" /> 大盤商
-    <input type="radio" name="role" value="工廠" /> 工廠
+<table width="400" border="1" class="table table-hover">
+  <tr class = "table-primary">
+    <td>隊伍名稱</td><td><input type="text" name="title" required/></td></tr>
+  <tr class = "table-primary">
+    <td>選擇角色</td><td>
+    <input type="radio" name="role" value="retailer" checked/> 零售商
+    <input type="radio" name="role" value="wholesaler" /> 批發商
+    <input type="radio" name="role" value="distributor" /> 大盤商
+    <input type="radio" name="role" value="factory" /> 工廠
     </td></tr>
     <tr><td colspan="2" style="text-align:center">
-    <input type="submit" value="創建"/> <input type="reset" /></td></tr>
-</table>
-</center>
-<center>
-<input type="button" value="返回隊伍列表" onclick="location.href='teamlist.php'">
-</center>
+    <input type="submit" /> <input type="reset" /></td></tr>
+</table></form>
+<form method="post">
+<input type="submit" name="back" value="返回隊伍列表" />
+</form>
+<?php
+if (isset($_POST['back']))
+    header("Location: teamlist.php");
+?>
 </body>
 </html>
