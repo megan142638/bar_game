@@ -1,11 +1,5 @@
 <?php
 require("userModel.php");
-require("orderControl.php");
-
-$id= getCurrentID();
-$RoomNo=(int)$_GET['roomNo'];
-$result = getcontent();
-$rank = 0;
 function getcontent()
 {
     global $db, $RoomNo;
@@ -15,26 +9,18 @@ function getcontent()
     $result = mysqli_stmt_get_result($stmt);
     return $result;
 }
-function score()
-{
-    global $db, $RoomNo;
-    $sql = "select score from rank where roomNo = ".$RoomNo;
-    $stmt = mysqli_prepare($db, $sql);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $rs = mysqli_fetch_assoc($result);
-    return $rs['score'];
-}
+$result = getcontent();
+$rank = 0;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>遊戲結算</title>
-<h1>遊戲結束 房號:<?php echo $RoomNo;?> 總成本:<?php echo score();?></h1>
+<title>排行榜</title>
+<h1>Rank</h1>
 </head>
 <body>
-<h2>Rank</h2>
+<hr/>
 <table width="400" border="1">
 <th>排名</th><th>房號</th><th>房間名稱</th><th>隊長</th><th>總成本</th>
 <?php
