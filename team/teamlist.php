@@ -114,10 +114,15 @@ else{
 echo '<form method="post" >';
 echo '<input type="submit" name="logout" value="登出" /></form>';
 
+echo '<form method="post" >';
+echo '<input type="submit" name="rank" value="排行榜" /></form>';
+
 if (isset($_POST['create']))
     header("Location: creatTeam.php");
 if (isset($_POST['logout']))
     header("Location: logout.php");
+if (isset($_POST['rank']))
+    header("Location: rank.php");
 ?>
 </body>
 </html>

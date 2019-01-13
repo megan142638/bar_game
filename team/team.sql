@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2019 年 01 月 14 日 03:31
+-- 產生時間： 2019 年 01 月 13 日 02:45
 -- 伺服器版本: 10.1.32-MariaDB
 -- PHP 版本： 7.2.5
 
@@ -38,56 +38,56 @@ CREATE TABLE `admset` (
 --
 
 INSERT INTO `admset` (`week`, `demand`) VALUES
-(1, 16),
-(2, 19),
-(3, 26),
-(4, 23),
-(5, 9),
-(6, 8),
-(7, 1),
-(8, 5),
-(9, 23),
-(10, 18),
-(11, 22),
-(12, 8),
-(13, 20),
-(14, 3),
-(15, 8),
-(16, 26),
-(17, 5),
-(18, 24),
-(19, 19),
-(20, 10),
-(21, 27),
-(22, 13),
-(23, 19),
-(24, 19),
-(25, 24),
-(26, 11),
-(27, 10),
-(28, 24),
-(29, 27),
-(30, 23),
-(31, 13),
-(32, 15),
-(33, 30),
+(1, 10),
+(2, 10),
+(3, 10),
+(4, 10),
+(5, 10),
+(6, 29),
+(7, 9),
+(8, 20),
+(9, 26),
+(10, 14),
+(11, 11),
+(12, 22),
+(13, 8),
+(14, 21),
+(15, 13),
+(16, 5),
+(17, 19),
+(18, 3),
+(19, 7),
+(20, 30),
+(21, 14),
+(22, 26),
+(23, 28),
+(24, 21),
+(25, 25),
+(26, 27),
+(27, 7),
+(28, 18),
+(29, 19),
+(30, 13),
+(31, 30),
+(32, 24),
+(33, 19),
 (34, 14),
-(35, 12),
-(36, 16),
-(37, 11),
-(38, 1),
-(39, 4),
-(40, 1),
-(41, 21),
-(42, 15),
-(43, 2),
-(44, 23),
-(45, 17),
-(46, 1),
+(35, 6),
+(36, 8),
+(37, 7),
+(38, 18),
+(39, 22),
+(40, 3),
+(41, 15),
+(42, 24),
+(43, 26),
+(44, 7),
+(45, 22),
+(46, 10),
 (47, 5),
-(48, 28),
-(49, 21),
-(50, 10);
+(48, 23),
+(49, 28),
+(50, 18);
 
 -- --------------------------------------------------------
 
@@ -113,8 +113,7 @@ CREATE TABLE `distributor` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
-  `Allcost` int(10) NOT NULL,
-  `send` int(2) DEFAULT NULL
+  `send` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -129,8 +128,7 @@ CREATE TABLE `factory` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
-  `Allcost` int(10) NOT NULL,
-  `send` int(2) DEFAULT NULL
+  `send` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -154,20 +152,7 @@ CREATE TABLE `list` (
 --
 
 CREATE TABLE `period` (
-  `week` int(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- 資料表結構 `rank`
---
-
-CREATE TABLE `rank` (
-  `roomNo` int(11) NOT NULL,
-  `name` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `leaderID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `score` int(10) NOT NULL
+  `week` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -182,8 +167,7 @@ CREATE TABLE `retailer` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
-  `Allcost` int(10) NOT NULL,
-  `send` int(2) DEFAULT NULL
+  `send` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -222,8 +206,7 @@ CREATE TABLE `wholesaler` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
-  `Allcost` int(10) NOT NULL,
-  `send` int(2) DEFAULT NULL
+  `send` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -267,12 +250,6 @@ ALTER TABLE `period`
   ADD PRIMARY KEY (`week`);
 
 --
--- 資料表索引 `rank`
---
-ALTER TABLE `rank`
-  ADD PRIMARY KEY (`roomNo`);
-
---
 -- 資料表索引 `retailer`
 --
 ALTER TABLE `retailer`
@@ -304,12 +281,6 @@ ALTER TABLE `admset`
 -- 使用資料表 AUTO_INCREMENT `list`
 --
 ALTER TABLE `list`
-  MODIFY `roomNo` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- 使用資料表 AUTO_INCREMENT `rank`
---
-ALTER TABLE `rank`
   MODIFY `roomNo` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
