@@ -33,7 +33,7 @@ $set = 0;
 if ($id != $leader && check() && $set == 0)
     echo "<th>選擇角色</th></tr>";
 for($i = 0; $i < $count; $i++){
-    echo '<tr><td><img src="../../icon/', $player[$i], '.png" /></td>';
+    echo '<tr><td width = 100><img src="icon/', $player[$i], '.png" width = 150 height = 112.5 /></td>';
     echo "<td>", $player[$i], "</td>";
     if($role[$i])
         echo "<td>", $role[$i], "</td></tr>";
