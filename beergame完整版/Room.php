@@ -15,27 +15,10 @@ $ready = checkRole();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="Shortcut Icon" type="image/x-icon" href="http://localhost/beergame完整版/beer.png" />
 <title>房間</title>
 <meta http-equiv="refresh" content="3" />
-<style type="text/css">
-    @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
-            body{ 
-                font-family: 'Noto Sans TC';
-                font-size: 20px;
-                background:url(http://localhost/beergame完整版/wood.jpg);
-                -moz-background-size:cover;
-                -webkit-background-size:cover;
-                -o-background-size:cover;
-                background-size:cover;
-                color: white;
-                text-align: center;
-            }  
-
-
-        </style>
-</style>
 </head>
 
 <body>
@@ -43,15 +26,14 @@ $ready = checkRole();
 <h1>房間號碼:<?php echo $RoomNo; ?> 房間名稱:<?php echo $RoomName; ?></h1>
 <h2>隊長:<?php echo $leader; ?> 你是:<?php echo $id; ?></h2>
 <hr />
-<center>
-    <table width="600" border="1" class="" style="color:white" >
-  <tr><th>大頭貼</th><th>玩家</th><th>角色</th>
+<table width="600" border="1" class="table table-hover">
+  <tr class="table-warning"><th>大頭貼</th><th>玩家</th><th>角色</th>
 <?php 
 $set = 0;
 if ($id != $leader && check() && $set == 0)
     echo "<th>選擇角色</th></tr>";
 for($i = 0; $i < $count; $i++){
-    echo '<tr><td width=100><img src="http://localhost/beergame完整版/icon/', $player[$i], '.png" width=100 height=75 /></td>';
+    echo '<tr><td><img src="../../icon/', $player[$i], '.png" /></td>';
     echo "<td>", $player[$i], "</td>";
     if($role[$i])
         echo "<td>", $role[$i], "</td></tr>";
@@ -76,10 +58,8 @@ for($i = 0; $i < $count; $i++){
 }
 ?>
 </table>
-</center>
-
 <form method="post" action="">
-<input type="submit" name="Button" value="退出房間" />
+<input type="submit" name="Button" value="退出房間" class="btn btn-warning" />
 </form>
 <?php
 if (isset($_POST['Button']))
