@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2019 年 01 月 13 日 21:22
+-- 產生時間： 2019 年 01 月 14 日 02:11
 -- 伺服器版本: 10.1.32-MariaDB
 -- PHP 版本： 7.2.5
 
@@ -113,6 +113,7 @@ CREATE TABLE `distributor` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
+  `Allcost` int(10) NOT NULL,
   `send` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -128,6 +129,7 @@ CREATE TABLE `factory` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
+  `Allcost` int(10) NOT NULL,
   `send` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -158,6 +160,19 @@ CREATE TABLE `period` (
 -- --------------------------------------------------------
 
 --
+-- 資料表結構 `rank`
+--
+
+CREATE TABLE `rank` (
+  `roomNo` int(11) NOT NULL,
+  `name` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `leaderID` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  `score` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- 資料表結構 `retailer`
 --
 
@@ -167,6 +182,7 @@ CREATE TABLE `retailer` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
+  `Allcost` int(10) NOT NULL,
   `send` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -206,6 +222,7 @@ CREATE TABLE `wholesaler` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
+  `Allcost` int(10) NOT NULL,
   `send` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -250,6 +267,12 @@ ALTER TABLE `period`
   ADD PRIMARY KEY (`week`);
 
 --
+-- 資料表索引 `rank`
+--
+ALTER TABLE `rank`
+  ADD PRIMARY KEY (`roomNo`);
+
+--
 -- 資料表索引 `retailer`
 --
 ALTER TABLE `retailer`
@@ -281,7 +304,13 @@ ALTER TABLE `admset`
 -- 使用資料表 AUTO_INCREMENT `list`
 --
 ALTER TABLE `list`
-  MODIFY `roomNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `roomNo` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- 使用資料表 AUTO_INCREMENT `rank`
+--
+ALTER TABLE `rank`
+  MODIFY `roomNo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
