@@ -3,5 +3,5 @@ require("dbconfig.php");
 
 session_destroy();
 
-header("Location: login.php");
+header("Location: loginView.php");
 ?>
