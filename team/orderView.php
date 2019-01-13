@@ -8,13 +8,16 @@ $role=getRole();
 $result=getcontent();
 $week=getWeek();
 $ord=getOrd($role, $week);
+$cost = getCost();
+$store = getStore();
+$debt = getDebt();
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Beer Game</title>
-
+<meta http-equiv="refresh" content="5" />
 
 <!--<script type="text/javascript">
 function formReset()
@@ -56,17 +59,18 @@ if (isset($_POST['sub'])){
     update($num);
     echo '<input type="number" disabled="disabled" value="',$num,'"/>';
     echo '<input type="submit" disabled="disabled" /><input type="reset" disabled="disabled"/>';
-} else if ($ord != ""){
+} else if (isset($ord)){
     echo '<input type="text" disabled="disabled" value="等待其他玩家輸入"/>';
     echo '<input type="submit" disabled="disabled" /><input type="reset" disabled="disabled"/>';
 } else {
     echo '<form method="post">';
-    echo '<input type="number" name="order" min="0"/>';
+    echo '<input type="number" name="order" min="0" required/>';
     echo '<input type="submit" name="sub" /><input type="reset" /></form>';
 }
 if (checknext() == 1 && $week <= 50){
+    //if (Counting() == 1)
     Counting();
-    nextweek();
+        nextweek();
 }
 ?>
 </td></tr>

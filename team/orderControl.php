@@ -21,10 +21,10 @@ function getcontent()
 }
 function update($num)
 {
-    global $db, $role;
-    $sql = "UPDATE ".$role." set ord = ?";
+    global $db, $role, $week;
+    $sql = "UPDATE ".$role." set ord = ? where week = ?";
     $stmt = mysqli_prepare($db, $sql);
-    mysqli_stmt_bind_param($stmt, "i", $num);
+    mysqli_stmt_bind_param($stmt, "ii", $num, $week);
     mysqli_stmt_execute($stmt);
 }
 function getWeek()
@@ -42,16 +42,9 @@ function checknext()
     global $db, $week, $ready;
     //$week = getWeek();
     $arr = array("retailer","wholesaler","distributor","factory");
-    for ($i = 0; $i < 4; $i++){
-        $sql = "select ord from ".$arr[$i]." where week = ?";
-        $stmt = mysqli_prepare($db, $sql);
-        mysqli_stmt_bind_param($stmt, "i", $week);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        $rs = mysqli_fetch_assoc($result);
-        if ($rs['ord'] != "")
+    for ($i = 0; $i < 4; $i++)
+        if (getOrd($arr[$i],$week) !== null)
             $ready++;
-    }
     if ($ready == 4){
         $ready = 0;
         return 1;
@@ -62,16 +55,32 @@ function checknext()
 function nextweek()
 {
     global $db, $role, $week, $store, $debt, $cost;
-    $sql = "UPDATE period set week = week + 1";
-    $stmt = mysqli_prepare($db, $sql);
-    mysqli_stmt_execute($stmt);
-    echo $week;
+    $ready = 0;
     $nweek = $week+1;
-    echo $nweek;
     $sql = "INSERT INTO ".$role."(week,store,debt,cost) VALUES (?,?,?,?)";
     $stmt = mysqli_prepare($db, $sql);
     mysqli_stmt_bind_param($stmt, "iiii", $nweek, $store, $debt, $cost);
     mysqli_stmt_execute($stmt);
+    
+    $arr = array("retailer","wholesaler","distributor","factory");
+    for ($i = 0; $i < 4; $i++)
+        if (checkinsert($arr[$i],$nweek) > 0)
+            $ready++;
+    if ($ready == 4){
+        $sql = "UPDATE period set week = ".$nweek;
+        $stmt = mysqli_prepare($db, $sql);
+        mysqli_stmt_execute($stmt);
+    }
+}
+function checkinsert($role, $week)
+{
+    global $db;
+    $sql = "select cost from ".$role." where week = ".$week;
+    $stmt = mysqli_prepare($db, $sql);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    $rs = mysqli_fetch_assoc($result);
+    return $rs['cost'];
 }
 function getOrd($role, $week)
 {
@@ -142,20 +151,19 @@ function getCost()
 }
 function Counting()
 {
-    global $db, $role, $week;
-    $cost = getCost();
-    $store = getStore(); //新庫存=舊庫存
+    global $db, $role, $week, $count, $cost, $debt;
+    global $store;//新庫存=舊庫存
     $arr = array("retailer","wholesaler","distributor","factory");
     if ($week >= 3 && $week <= 50){
         for ($i = 0; $i < 4; $i++){
             if ($role == $arr[0]){
-                //+到貨
-                $store += getSend($arr[$i+1],$week-2);
                 //更新本周出貨量
                 if ($store > getSysDem())
                     UpdateSend(getSysDem());
                 else
                     UpdateSend($store);
+                //+到貨
+                $store += getSend($arr[$i+1],$week-2);
                 //-訂單
                 $store -= getSysDem();
                 //-欠貨
@@ -165,16 +173,16 @@ function Counting()
                     $store = 0;
                 } else
                     $debt = 0;
-                $cost = $store + 2 * $debt;
+                $cost += $store + 2 * $debt;
                 break;
             } else if ($role == $arr[$i] && $i != 3){
-                //+到貨
-                $store += getSend($arr[$i+1],$week-2);
                 //更新本周出貨量
                 if ($store > getOrd($arr[$i-1],$week))
                     UpdateSend(getOrd($arr[$i-1],$week));
                 else
                     UpdateSend($store);
+                //+到貨
+                $store += getSend($arr[$i+1],$week-2);
                 //-訂單
                 $store -= getOrd($arr[$i-1],$week);
                 //-欠貨
@@ -184,7 +192,7 @@ function Counting()
                     $store = 0;
                 } else
                     $debt = 0;
-                $cost = $store + 2 * $debt;
+                $cost += $store + 2 * $debt;
                 break;
             } else if ($i == 3) {
                 //+到貨
@@ -203,7 +211,7 @@ function Counting()
                     $store = 0;
                 } else
                     $debt = 0;
-                $cost = $store + 2 * $debt;
+                $cost += $store + 2 * $debt;
                 break;
             }
         }
@@ -225,7 +233,7 @@ function Counting()
                     $store = 0;
                 } else
                     $debt = 0;
-                $cost = $store + 2 * $debt;
+                $cost += $store + 2 * $debt;
                 break;
             } else if ($role == $arr[$i]) {
                 //+到貨=0
@@ -243,11 +251,18 @@ function Counting()
                     $store = 0;
                 } else
                     $debt = 0;
-                $cost = $store + 2 * $debt;
+                $cost += $store + 2 * $debt;
                 break;
             }
         }
     }
-    
+    /*for ($i = 0; $i < 4; $i++)
+        if (getSend($arr[$i],$week) !== null)
+            $count++;
+    if ($count == 4){
+        $count = 0;
+        return 1;
+    } else
+        return 0;*/
 }
 ?>

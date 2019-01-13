@@ -58,7 +58,6 @@ $per=getPermission();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/sandstone/bootstrap.min.css">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>隊伍列表</title>
 <meta http-equiv="refresh" content="3" />
@@ -66,15 +65,15 @@ $per=getPermission();
 
 <body>
 
-<h1>Team List</h1>
+<h1>Team List !!</h1>
 <hr />
-<table width="600" border="1" class="table table-hover">
-  <tr class = "table-info">
+<table width="600" border="1" class="">
+  <tr>
     <td>id</td>
     <td>隊伍名稱</td>
     <td>隊長</td>
     <td>人數</td>
-    <td>選項</td>
+<td>選項</td>
   </tr>
 <?php
 while ($rs = mysqli_fetch_assoc($result)) {

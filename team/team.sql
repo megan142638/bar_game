@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機: 127.0.0.1
--- 產生時間： 2019 年 01 月 13 日 17:31
+-- 產生時間： 2019 年 01 月 13 日 02:45
 -- 伺服器版本: 10.1.32-MariaDB
 -- PHP 版本： 7.2.5
 
@@ -113,7 +113,7 @@ CREATE TABLE `distributor` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
-  `send` int(2) DEFAULT NULL
+  `send` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -128,7 +128,7 @@ CREATE TABLE `factory` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
-  `send` int(2) DEFAULT NULL
+  `send` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -167,7 +167,7 @@ CREATE TABLE `retailer` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
-  `send` int(2) DEFAULT NULL
+  `send` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -206,7 +206,7 @@ CREATE TABLE `wholesaler` (
   `store` int(2) NOT NULL,
   `debt` int(2) NOT NULL,
   `cost` int(10) NOT NULL,
-  `send` int(2) DEFAULT NULL
+  `send` int(2) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
