@@ -90,8 +90,10 @@ function checkinsert($role, $week)
 function getOrd($role, $week)
 {
     global $db;
-    $sql = "select ord from ".$role." where week = ".$week;
+    $sql = "select ord from wholesaler where week =?";
+	
     $stmt = mysqli_prepare($db, $sql);
+	mysqli_stmt_bind_param($stmt, "i", $week);
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     $rs = mysqli_fetch_assoc($result);
@@ -260,7 +262,7 @@ function Counting()
             } else if ($role == $arr[$i] && $i != 3){
                 //更新本周出貨量
                 if ($store > getOrd($arr[$i-1],$week))
-                    UpdateSend(getOrd($arr[$i-1]));
+                    UpdateSend(getOrd($arr[$i-1],$week));
                 else
                     UpdateSend($store);
                 //+到貨
@@ -285,7 +287,7 @@ function Counting()
             } else if ($i == 3) {
                 //更新本周出貨量
                 if ($store > getOrd($arr[$i-1],$week))
-                    UpdateSend(getOrd($arr[$i-1]));
+                    UpdateSend(getOrd($arr[$i-1],$week));
                 else
                     UpdateSend($store);
                 //+到貨
